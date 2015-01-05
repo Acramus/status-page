@@ -9,14 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 class PageController extends Controller
 {
-
     public function indexAction()
     {
         $endpoints = array();
 
         return $this->render('Page/status.html.twig', array(
-                    'endpoints' => $endpoints
+                    'endpoints' => $endpoints,
         ));
     }
-
 }
