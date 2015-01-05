@@ -1,0 +1,7 @@
+itaw_backend:
+    resource: "@itawBackendBundle/Resources/config/routing.yml"
+    prefix:   /backend
+
+itaw_app:
+    resource: "@itawAppBundle/Resources/config/routing.yml"
+    prefix:   /
