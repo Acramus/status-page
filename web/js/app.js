@@ -8,4 +8,8 @@
 
 $(document).ready(function () {
 
+    var currentPage = $('#current-page');
+
+    $('#nl-' + currentPage).addClass('active');
+
 });
