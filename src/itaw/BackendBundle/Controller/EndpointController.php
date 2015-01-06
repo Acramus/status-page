@@ -12,6 +12,7 @@ use itaw\Helper\EndpointHelper;
  */
 class EndpointController extends Controller
 {
+
     public function collectionAction()
     {
         $endpoints = $this->getDoctrine()->getRepository('itawDataBundle:Endpoint')->findAll();
@@ -39,7 +40,7 @@ class EndpointController extends Controller
             $endpoint->setHost($request->get('host'))
                     ->setIp($request->get('ip'))
                     ->setName($request->get('name'))
-                    ->setSlug(EndpointHelper::generateSlug($request->get('host').$request->get('name')))
+                    ->setSlug(EndpointHelper::generateSlug($request->get('host') . $request->get('name')))
             ;
 
             //validate
@@ -64,11 +65,46 @@ class EndpointController extends Controller
         return $this->render('itawBackendBundle:Endpoint:create.html.twig');
     }
 
-    public function updateAction()
+    public function updateAction(Request $request, $slug)
     {
+        $session = $request->getSession();
+        $endpoint = $this->getDoctrine()->getRepository('itawDataBundle:Endpoint')->findOneBySlug($slug);
+
+        if ($request->get('sent', 0) == 1) {
+            $endpoint->setHost($request->get('host'))
+                    ->setIp($request->get('ip'))
+                    ->setName($request->get('name'))
+                    ->setSlug(EndpointHelper::generateSlug($request->get('host') . $request->get('name')))
+            ;
+
+            //validate
+            $validator = $this->get('validator');
+            $errors = $validator->validate($endpoint);
+
+            if (count($errors) > 0) {
+                foreach ($errors as $error) {
+                    $session->getFlashBag()->add('error', $error);
+                }
+
+                return $this->render('itawBackendBundle:Endpoint:update.html.twig', array(
+                            'endpoint' => $endpoint
+                ));
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->redirectToRoute('backend_endpoints_collection');
+        }
+
+        return $this->render('itawBackendBundle:Endpoint:update.html.twig', array(
+                    'endpoint' => $endpoint
+        ));
     }
 
-    public function deleteAction()
+    public function deleteAction(Request $request, $slug)
     {
+        
     }
+
 }
