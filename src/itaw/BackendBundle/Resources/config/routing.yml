@@ -5,3 +5,7 @@ backend_index:
 backend_dashboard:
     pattern:  /dashboard
     defaults: { _controller: itawBackendBundle:Page:dashboard }
+
+backend_endpoints:
+    resource: "@itawBackendBundle/Resources/config/Endpoint/routing.yml"
+    prefix:   /endpoints

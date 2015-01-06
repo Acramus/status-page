@@ -1,0 +1,18 @@
+itaw\DataBundle\Entity\Endpoint:
+    properties:
+        name:
+            - NotBlank: ~
+        slug:
+            - NotBlank: ~
+        host:
+            - NotBlank: ~
+        ip:
+            - Ip: ~
+itaw\DataBundle\Entity\Incident:
+    properties:
+        title:
+            - NotBlank: ~
+        description:
+            - NotBlank: ~
+        occurence:
+            - DateTime: ~

@@ -1,0 +1,35 @@
+{% extends 'itawBackendBundle::layout.html.twig' %}
+
+{% block title %}Endpoints{% endblock %}
+
+{% block currentPage %}endpoints{% endblock %}
+
+{% block content %}
+    
+    <div>
+        <h2>
+            <a href="{{ path('backend_endpoints_collection') }}">Endpoints</a>
+            /
+            Delete
+        </h2>        
+    </div>
+
+    <div class="panel panel-danger">
+        <div class="panel-body">
+
+            <form method="post" id="form-add-endpoint">
+
+                <div class="form-group">
+                    <label for="input-name">Delete Endpoint '{{ endpoint.name }}'?</label>
+                </div>
+
+                <input type="hidden" value="1" name="sent">
+
+                <button type="submit" class="btn btn-danger">Delete</button>
+
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}
