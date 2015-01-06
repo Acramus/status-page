@@ -1,3 +1,6 @@
+_user_bundle:
+    resource: "@itawUserBundle/Resources/config/routing.yml"
+
 itaw_backend:
     resource: "@itawBackendBundle/Resources/config/routing.yml"
     prefix:   /backend
