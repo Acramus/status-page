@@ -38,9 +38,9 @@ class Incident
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="occurence", type="datetime")
+     * @ORM\Column(name="occurrence", type="datetime")
      */
-    private $occurence;
+    private $occurrence;
 
     /**
      * @ORM\ManyToOne(targetEntity="Endpoint", inversedBy="incidents")
@@ -105,26 +105,26 @@ class Incident
     }
 
     /**
-     * Set occurence
+     * Set occurrence
      *
-     * @param  \DateTime $occurence
+     * @param  \DateTime $occurrence
      * @return Incident
      */
-    public function setOccurence($occurence)
+    public function setOccurrence($occurrence)
     {
-        $this->occurence = $occurence;
+        $this->occurrence = $occurrence;
 
         return $this;
     }
 
     /**
-     * Get occurence
+     * Get occurrence
      *
      * @return \DateTime
      */
-    public function getOccurence()
+    public function getOccurrence()
     {
-        return $this->occurence;
+        return $this->occurrence;
     }
 
     /**

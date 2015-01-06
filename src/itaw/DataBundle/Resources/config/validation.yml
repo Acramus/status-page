@@ -14,5 +14,5 @@ itaw\DataBundle\Entity\Incident:
             - NotBlank: ~
         description:
             - NotBlank: ~
-        occurence:
+        occurrence:
             - DateTime: ~

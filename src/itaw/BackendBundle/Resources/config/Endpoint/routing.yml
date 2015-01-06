@@ -17,8 +17,3 @@ backend_endpoints_update:
 backend_endpoints_delete:
     pattern:  /{slug}/delete
     defaults: { _controller: itawBackendBundle:Endpoint:delete }
-
-#incidents    
-backend_endpoints_incidents:
-    resource: "@itawBackendBundle/Resources/config/Endpoint/Incident/routing.yml"
-    prefix:   /{slug}/incidents

@@ -8,7 +8,7 @@
 
     <div>
         <span class="pull-right">
-            <a class="btn btn-success btn-sm" href=""><i class="fa fa-exclamation-triangle"></i> Add Incident</a>
+            <a class="btn btn-success btn-sm" href="{{ path('backend_incidents_create', {endpoint: endpoint.slug}) }}"><i class="fa fa-exclamation-triangle"></i> Add Incident</a>
             <a class="btn btn-warning btn-sm" href="{{ path('backend_endpoints_update', {slug: endpoint.slug}) }}"><i class="fa fa-edit"></i></a>
             <a class="btn btn-danger btn-sm" href="{{ path('backend_endpoints_delete', {slug: endpoint.slug}) }}"><i class="fa fa-trash"></i></a>
         </span>
@@ -17,7 +17,7 @@
             <a href="{{ path('backend_endpoints_collection') }}">Endpoints</a>
             /
             {{ endpoint.name }}
-        </h2>        
+        </h2>
     </div>
 
     <table class="table table-bordered">
@@ -35,15 +35,15 @@
         <h2>Incidents</h2>
 
         <table class="table table-bordered">
-
             {% for incident in endpoint.incidents %}
                 <tr>
-                    <td>{{ incident.title }}</td>
-                    <td>{{ incident.description }}</td>
-                    <td>{{ incident.occurrence|date('d.m.Y g:h:i') }}</td>
+                    <td>
+                        <a href="{{ path('backend_incidents_object', {incidentId: incident.id}) }}">{{ incident.title }}</a>
+                    </td>
+                    <td>{{ incident.description|length > 50 ? incident.description|slice(0, 50) ~ '...' : incident.description  }}</td>
+                    <td>{{ incident.occurrence|date('d.m.Y H:i:s') }}</td>
                 </tr>
             {% endfor %}
-
         </table>
 
     {% endif %}

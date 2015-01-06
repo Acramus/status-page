@@ -1,14 +1,14 @@
 {% extends 'itawBackendBundle::layout.html.twig' %}
 
-{% block title %}Endpoints{% endblock %}
+{% block title %}Incidents{% endblock %}
 
-{% block currentPage %}endpoints{% endblock %}
+{% block currentPage %}incidents{% endblock %}
 
 {% block content %}
 
     <div>
         <h2>
-            <a href="{{ path('backend_endpoints_collection') }}">Endpoints</a>
+            <a href="{{ path('backend_incidents_collection') }}">Incidents</a>
             /
             Delete
         </h2>
@@ -17,10 +17,10 @@
     <div class="panel panel-danger">
         <div class="panel-body">
 
-            <form method="post" id="form-delete-endpoint">
+            <form method="post" id="form-delete-incident">
 
                 <div class="form-group">
-                    <label for="input-name">Delete Endpoint '{{ endpoint.name }}'?</label>
+                    <label for="input-name">Delete Incident '{{ incident.title }}'?</label>
                 </div>
 
                 <input type="hidden" value="1" name="sent">

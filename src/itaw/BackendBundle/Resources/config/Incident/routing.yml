@@ -1,0 +1,19 @@
+backend_incidents_collection:
+    pattern:  /
+    defaults: { _controller: itawBackendBundle:Incident:collection }
+
+backend_incidents_create:
+    pattern:  /create
+    defaults: { _controller: itawBackendBundle:Incident:create }
+
+backend_incidents_object:
+    pattern:  /{incidentId}
+    defaults: { _controller: itawBackendBundle:Incident:object }
+
+backend_incidents_update:
+    pattern:  /{incidentId}/update
+    defaults: { _controller: itawBackendBundle:Incident:update }
+
+backend_incidents_delete:
+    pattern:  /{incidentId}/delete
+    defaults: { _controller: itawBackendBundle:Incident:delete }
