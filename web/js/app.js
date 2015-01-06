@@ -8,7 +8,7 @@
 
 $(document).ready(function () {
 
-    var currentPage = $('#current-page');
+    var currentPage = $('#current-page').html();
 
     $('#nl-' + currentPage).addClass('active');
 
