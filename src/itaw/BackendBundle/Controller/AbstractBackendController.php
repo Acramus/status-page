@@ -5,7 +5,7 @@ namespace itaw\BackendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * @author Florian Weber <fweber@ligneus.de>
+ * @author Florian Weber <florian.weber.dd@icloud.com>
  */
 abstract class AbstractBackendController extends Controller
 {

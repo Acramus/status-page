@@ -7,7 +7,7 @@ use itaw\DataBundle\Entity\Endpoint;
 use itaw\Helper\EndpointHelper;
 
 /**
- * @author Florian Weber <fweber@ligneus.de>
+ * @author Florian Weber <florian.weber.dd@icloud.com>
  */
 class EndpointController extends AbstractBackendController
 {

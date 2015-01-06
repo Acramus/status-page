@@ -3,7 +3,7 @@
 namespace itaw\Helper;
 
 /**
- * @author Florian Weber <fweber@ligneus.de>
+ * @author Florian Weber <florian.weber.dd@icloud.com>
  */
 class EndpointHelper
 {
