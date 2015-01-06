@@ -2,7 +2,6 @@
 
 namespace itaw\BackendBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use itaw\DataBundle\Entity\Endpoint;
 use itaw\Helper\EndpointHelper;
@@ -10,9 +9,8 @@ use itaw\Helper\EndpointHelper;
 /**
  * @author Florian Weber <fweber@ligneus.de>
  */
-class EndpointController extends Controller
+class EndpointController extends AbstractBackendController
 {
-
     public function collectionAction()
     {
         $endpoints = $this->getDoctrine()->getRepository('itawDataBundle:Endpoint')->findAll();
@@ -40,7 +38,7 @@ class EndpointController extends Controller
             $endpoint->setHost($request->get('host'))
                     ->setIp($request->get('ip'))
                     ->setName($request->get('name'))
-                    ->setSlug(EndpointHelper::generateSlug($request->get('host') . $request->get('name')))
+                    ->setSlug(EndpointHelper::generateSlug($request->get('host').$request->get('name')))
             ;
 
             //validate
@@ -74,7 +72,7 @@ class EndpointController extends Controller
             $endpoint->setHost($request->get('host'))
                     ->setIp($request->get('ip'))
                     ->setName($request->get('name'))
-                    ->setSlug(EndpointHelper::generateSlug($request->get('host') . $request->get('name')))
+                    ->setSlug(EndpointHelper::generateSlug($request->get('host').$request->get('name')))
             ;
 
             //validate
@@ -87,7 +85,7 @@ class EndpointController extends Controller
                 }
 
                 return $this->render('itawBackendBundle:Endpoint:update.html.twig', array(
-                            'endpoint' => $endpoint
+                            'endpoint' => $endpoint,
                 ));
             }
 
@@ -98,13 +96,12 @@ class EndpointController extends Controller
         }
 
         return $this->render('itawBackendBundle:Endpoint:update.html.twig', array(
-                    'endpoint' => $endpoint
+                    'endpoint' => $endpoint,
         ));
     }
 
     public function deleteAction(Request $request, $slug)
     {
-        $session = $request->getSession();
         $endpoint = $this->getDoctrine()->getRepository('itawDataBundle:Endpoint')->findOneBySlug($slug);
 
         if ($request->get('sent', 0) == 1) {
@@ -116,8 +113,7 @@ class EndpointController extends Controller
         }
 
         return $this->render('itawBackendBundle:Endpoint:delete.html.twig', array(
-                    'endpoint' => $endpoint
+                    'endpoint' => $endpoint,
         ));
     }
-
 }

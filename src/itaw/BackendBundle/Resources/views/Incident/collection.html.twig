@@ -1,0 +1,55 @@
+{% extends 'itawBackendBundle::layout.html.twig' %}
+
+{% block title %}Incidents{% endblock %}
+
+{% block currentPage %}incidents{% endblock %}
+
+{% block content %}
+
+    <div>
+        <span class="pull-right">
+            <a class="btn btn-success btn-sm" href="{{ path('backend_incidents_create') }}"><i class="fa fa-plus"></i> Add Incident</a>
+        </span>
+
+        <h2>
+            Incidents
+        </h2>
+    </div>
+
+    {% if incidents|length() > 0 %}
+
+        <table class="table table-bordered">
+            {% for incident in incidents %}
+                <tr>
+                    <td>
+                        <a href="{{ path('backend_incidents_object', {incidentId: incident.id}) }}">{{ incident.title }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ path('backend_endpoints_object', {slug: incident.endpoint.slug}) }}">{{ incident.endpoint.name }}</a>
+                    </td>
+                    <td>{{ incident.description|length > 50 ? incident.description|slice(0, 50) ~ '...' : incident.description  }}</td>
+                    <td>{{ incident.occurrence|date('d.m.Y H:i:s') }}</td>
+
+                    <td>
+                        <div class="pull-right">
+                            <a class="btn btn-sm btn-warning" href="{{ path('backend_incidents_update', {incidentId: incident.id}) }}">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a class="btn btn-sm btn-danger" href="{{ path('backend_incidents_delete', {incidentId: incident.id}) }}">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    {% else %}
+
+        <div class="alert alert-warning">
+            No Incidents found! <a class="alert-link" href="{{ path('backend_incidents_create') }}">Add One!</a>
+        </div>
+
+    {% endif %}
+
+{% endblock %}

@@ -9,3 +9,7 @@ backend_dashboard:
 backend_endpoints:
     resource: "@itawBackendBundle/Resources/config/Endpoint/routing.yml"
     prefix:   /endpoints
+
+backend_incidents:
+    resource: "@itawBackendBundle/Resources/config/Incident/routing.yml"
+    prefix:   /incidents
