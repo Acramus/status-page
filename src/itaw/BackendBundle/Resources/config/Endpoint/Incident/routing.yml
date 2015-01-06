@@ -1,0 +1,3 @@
+backend_endpoints_incidents_create:
+    pattern:  /create
+    defaults: { _controller: itawBackendBundle:Endpoint:createIncident }
