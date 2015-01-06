@@ -104,7 +104,20 @@ class EndpointController extends Controller
 
     public function deleteAction(Request $request, $slug)
     {
-        
+        $session = $request->getSession();
+        $endpoint = $this->getDoctrine()->getRepository('itawDataBundle:Endpoint')->findOneBySlug($slug);
+
+        if ($request->get('sent', 0) == 1) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($endpoint);
+            $em->flush();
+
+            return $this->redirectToRoute('backend_endpoints_collection');
+        }
+
+        return $this->render('itawBackendBundle:Endpoint:delete.html.twig', array(
+                    'endpoint' => $endpoint
+        ));
     }
 
 }
