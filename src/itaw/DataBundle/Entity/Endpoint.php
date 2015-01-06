@@ -51,7 +51,7 @@ class Endpoint
     private $ip;
 
     /**
-     * @ORM\OneToMany(targetEntity="Incident", mappedBy="endpoints")
+     * @ORM\OneToMany(targetEntity="Incident", mappedBy="endpoint")
      */
     private $incidents;
 

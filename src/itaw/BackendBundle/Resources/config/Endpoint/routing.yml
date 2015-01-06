@@ -1,0 +1,19 @@
+backend_endpoints_collection:
+    pattern:  /
+    defaults: { _controller: itawBackendBundle:Endpoint:collection }
+
+backend_endpoints_create:
+    pattern:  /create
+    defaults: { _controller: itawBackendBundle:Endpoint:create }
+
+backend_endpoints_object:
+    pattern:  /{slug}
+    defaults: { _controller: itawBackendBundle:Endpoint:object }
+
+backend_endpoints_update:
+    pattern:  /{slug}/update
+    defaults: { _controller: itawBackendBundle:Endpoint:update }
+
+backend_endpoints_delete:
+    pattern:  /{slug}/delete
+    defaults: { _controller: itawBackendBundle:Endpoint:delete }

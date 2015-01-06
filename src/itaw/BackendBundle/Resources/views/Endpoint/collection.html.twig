@@ -1,0 +1,42 @@
+{% extends 'itawBackendBundle::layout.html.twig' %}
+
+{% block title %}Endpoints{% endblock %}
+
+{% block currentPage %}endpoints{% endblock %}
+
+{% block content %}
+
+    <div>
+        <span class="pull-right">
+            <a class="btn btn-success btn-sm" href="{{ path('backend_endpoints_create') }}"><i class="fa fa-plus"></i> Add Endpoint</a>
+        </span>
+
+        <h2>
+            Endpoints
+        </h2>        
+    </div>
+
+    {% if endpoints|length() > 0 %}
+
+        <table class="table table-bordered">
+            {% for endpoint in endpoints %}
+                <tr>
+                    <td>
+                        <a href="{{ path('backend_endpoints_object', {slug: endpoint.slug}) }}">{{ endpoint.slug }}</a>
+                    </td>
+                    <td>{{ endpoint.name }}</td>
+                    <td>{{ endpoint.host }}</td>
+                    <td>{{ endpoint.ip }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    {% else %}
+
+        <div class="alert alert-warning">
+            No Endpoints defined! <a class="alert-link" href="{{ path('backend_endpoints_create') }}">Add One!</a>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
